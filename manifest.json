@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "CodeHub",
+  "description": "The Ultimate Coding Companion",
+  "homepage_url": "https://staging.student.kccitm.in/*",
+  "version": "1.0.0",
+  "author": "",
+  "action": {
+    "default_icon": "assets/logo.png",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "assets/logo.png",
+    "48": "assets/logo.png",
+    "128": "assets/logo.png"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "permissions": [
+    "unlimitedStorage",
+    "storage",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://staging.student.kccitm.in/*",
+        "https://leetcode.com/*",
+        "https://github.com/*",
+        "https://practice.geeksforgeeks.org/*"
+      ],
+      "js": [
+        "scripts/a.js",
+        "dist/leetcode_new.js",
+        "scripts/leetcode.js",
+        "scripts/authorize.js",
+        "old_scripts/leetcode_contest.js",
+        "scripts/gfg.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'",
+    "script-src": ["'self'", "https://staging.student.kccitm.in"]
+  }
+}
