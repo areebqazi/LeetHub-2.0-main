@@ -71,11 +71,12 @@ function fetchQuestionData() {
       }
       const title = $('.mr-2').text();
 
-      // $('a.text-xl').each ((index,element) => {
-      //   userId.push($(element).text());
-      // });
+      const userId =[];
+      $('a').each ((index,element) => {
+        userId.push($(element).text());
+      });
 
-      const userId = $('a.text-xl').text();
+      // const userId = $('a.text-xl').text();
 
       $('.text-xs').each((index, element) => {
         const text = $(element).text();
@@ -214,6 +215,8 @@ function fetchResultData() {
           const url_page = window.location.href
             .split('submissions')[0]
             .toUpperCase();
+
+          
 
             const userId = $('a.text-xl').text();
 

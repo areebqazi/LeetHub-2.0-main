@@ -31,7 +31,6 @@
         "https://practice.geeksforgeeks.org/*"
       ],
       "js": [
-        "scripts/a.js",
         "dist/leetcode_new.js",
         "scripts/leetcode.js",
         "scripts/authorize.js",
