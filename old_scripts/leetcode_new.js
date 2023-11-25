@@ -218,7 +218,7 @@ function fetchResultData() {
 
           
 
-            const userId = $('a.text-xl').text();
+          const userId = $('a.text-xl').text();
 
 
           const result_data = {
@@ -234,11 +234,48 @@ function fetchResultData() {
           };
 
           console.log(result_data);
+          uploadToGitHub();
         }
       }, 1000); // Check every second for result availability
     });
   }
 }
+const accessToken = githubToken;
+const repositoryName = 'kccitm_codeHub';
+const fileName = 'file.json';
+const jsonData = {
+  key1: 'value1',
+  key2: 'value2',
+  // Your JSON data here...
+};
+
+const uploadToGitHub = async () => {
+    const URL = `https://api.github.com/repos/areebqazi/${repositoryName}/contents/${fileName}`;
+
+    const data = {
+      message: 'Upload JSON file',
+      content:btoa(JSON.stringify(jsonData)),
+    };
+
+    const options = {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${githubToken}`,
+        Accept: 'application/vnd.github.v3+json',
+      },
+      body: JSON.stringify(data),
+    };
+    console.log("accessToken is = ",githubToken)
+    const response = await fetch(URL, options);
+    if (response.status === 201) {
+      const jsonResponse = await response.json();
+      console.log('File uploaded successfully:', jsonResponse);
+    } else {
+      const errorResponse = await response.json();
+      console.error('Error uploading file:', errorResponse);
+    }
+  } 
+
 
 // Set up intervals for fetching question and waiting for result click
 const questionInterval = setInterval(fetchQuestionData, 5000);

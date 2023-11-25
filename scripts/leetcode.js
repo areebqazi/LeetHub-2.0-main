@@ -257,7 +257,7 @@ async function getUpdatedData(token, hook, directory, filename) {
       Accept: 'application/vnd.github.v3+json',
     },
   };
-
+  
   return fetch(URL, options).then(res => {
     if (res.status === 200 || res.status === 201) {
       return res.json();
