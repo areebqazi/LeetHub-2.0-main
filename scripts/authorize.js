@@ -111,13 +111,4 @@ if (window.location.host === 'github.com') {
       localAuth.parseAccessCode(link);
     }
   });
-
-
-// if (window.location.host === 'staging.student.kccitm.in') {
-//   chrome.runtime.sendMessage({
-//     closeWebPage: true,
-//     isSuccess: true,
-//     data:localStorage.getItem('kt-auth-react-v')
-//   });
-// } 
 }

@@ -27,31 +27,8 @@ const oAuth2 = {
       url += this.SCOPES[i];
     }
 
-    // chrome.storage.local.set({ pipe_kccitm: true }, () => {
-    
-    //   chrome.tabs.create({ url: 'https://staging.student.kccitm.in', active: true },
-    //   (stagingTab) => {
-    //     // Execute code inside the staging website tab to extract the token
-    //     const codeToExecute = `
-    //       const tokenData = localStorage.getItem('kt-auth-react-v');
-    //       if (tokenData) {
-    //         const { api_token: accessToken } = JSON.parse(tokenData);
-    //         chrome.runtime.sendMessage({ token: accessToken });
-    //       }
-    //     `;
-
-    //     // Inject code into the staging website tab
-    //     chrome.scripting.executeScript({
-    //       target: { tabId: stagingTab.id },
-    //       func: () => { eval(${JSON.stringify(codeToExecute)}); },
-    //     });
-        
-    //   }
-    //   );
-    //   });
-
-
     chrome.storage.local.set({ pipe_leethub: true }, () => {
+      chrome.tabs.create({ url: 'https://staging.student.kccitm.in', active: true },function() {});
       // opening pipe temporarily, redirects to github
       chrome.tabs.create({ url, active: true }, function () {});
     });

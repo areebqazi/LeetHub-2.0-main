@@ -1,18 +1,6 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 
-let kccitmToken = null;
-let githubToken = null;
-chrome.storage.local.get(
-  ['kccitm_token', 'leethub_token'],
-  (result) => {
-    kccitmToken = result.kccitm_token;
-    githubToken = result.leethub_token;
-    console.log('API Token:', kccitmToken);
-    console.log('Token:', githubToken);
-  },
-);
-
 document.addEventListener('copy', function(e) {
   // Log the copy action
   console.log('Text copied:', window.getSelection().toString());
